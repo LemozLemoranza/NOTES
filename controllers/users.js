@@ -3,13 +3,14 @@ const bcrypt = require('bcryptjs')
 
 
 const User = require("../models/User");
+const { generarJWT } = require("../helpers/jwt-generator");
 
 
 
 
 
 
-const Login = (req,res) => {
+const Login = async(req,res) => {
    
     const errors = validationResult(req);
 
@@ -19,7 +20,14 @@ const Login = (req,res) => {
        res.render('users/login', {validaciones, valores})
     }
     else{
+        const { email, password } = req.body
+        const user = User.findOne({email})
+        const token = await generarJWT(user.id)
 
+        res.cookie('loginTK', token, {
+            httpOnly:true
+        })
+        console.log(token)
         res.send('ok')
     }
     
