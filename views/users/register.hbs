@@ -1,1 +1,28 @@
+{{#each validaciones}}
+
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <p>{{msg}}</p>
+
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  
+{{/each}}
+
+
+
 <h1>REGISTER</h1>
+
+<form action="" method="post">
+
+<input type="text" name="name" value ="{{valores.name}}"  autocomplete="off" required>
+<input type="email" name="email" value ="{{valores.email}}"  autocomplete="off" required>
+<input type="password" name="password" required>
+<input type="password" name="confirm_password" required>
+
+<button type="submit">ENVIAR</button>
+
+
+</form>
+
