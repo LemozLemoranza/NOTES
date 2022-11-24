@@ -4,6 +4,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    {{!-- FONTAWESOME --}}
+    <script src="https://kit.fontawesome.com/1e1830e477.js" crossorigin="anonymous"></script>
+
+
     <!-- BOOTSTRAP -->
     <link
       rel="stylesheet"
@@ -19,11 +23,11 @@
   </head>
   <body>
 
-    <p>NAV</p>
     <form action="/users/close" method="POST">
     <button type="submit">CLOSE</button>
     </form>
 
+        {{>nav}}
       <main class="container p-4">
         
         {{{body}}}

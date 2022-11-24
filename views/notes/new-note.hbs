@@ -1,1 +1,23 @@
+{{#each validaciones}}
+
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <p>{{msg}}</p>
+
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  
+{{/each}}
+
+
+
 <h1>NOTAS NUEVAS</h1>
+
+<form action="/notes/new-note" method="POST">
+
+    <input type="text" placeholder="titulo" required name="title">
+    <input type="text" placeholder="tarea" required name="description">
+
+    <button type="submit">ENVIAR</button>
+</form>

@@ -27,7 +27,7 @@ const Login = async(req,res) => {
         res.cookie('loginTK', token, {
             httpOnly:true
         })
-        res.redirect('/notes/new-note')
+        res.redirect('/notes/list-note')
     }
     
 }
@@ -57,7 +57,7 @@ const Register = async(req,res) => {
         
         await newUser.save()
         
-        res.redirect('/users/login')
+        res.render('users/register', {name})
         
     }
    

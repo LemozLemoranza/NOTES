@@ -1,0 +1,35 @@
+<h1>LISTA DE NOTAS</h1>
+<div class="row">
+    {{#each notes}}
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    {{title}} <a href="/notes/edit-note/{{_id}}"><i class="fas fa-edit"></i></a>
+                </h4>
+                <p>
+                    {{description}}
+                </p>
+
+               <form action="/notes/delete/{{_id}}?_method=DELETE" method="POST">
+               <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="btn btn-danger btn-block btn-sm">
+                    BORRAR
+                </button>
+                
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    {{else}}
+    <div class="card mx-auto">
+        <div class="card-body">
+            <p class="lead">No hay notas aún</p>
+            <a href="/notes/new-note" class="btn btn-success"> Crear una</a>
+        </div>
+    </div>
+    {{/each}}
+</div>
