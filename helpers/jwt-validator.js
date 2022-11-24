@@ -9,23 +9,26 @@ const validarJWT = async( req = request, res = response, next ) => {
     const token = req.cookies.loginTK ;
     
     if ( !token ) {
-        return res.status(401).redirect('/user/login');
+        return res.status(401).redirect('/users/login');
     }
 
     try {
         
-        jwt.verify( token, process.env.SECRET_KEY )
+        const {uid} = jwt.verify( token, process.env.SECRET_KEY )
+
+        const usuario = await User.findById(uid)
+        
+        req.usuario = usuario 
+
+        next()
         
 
     } catch (error) {
 
-        console.log(error);
-        res.status(401).json({
-            msg: 'Token no válido'
-        })
+        return res.status(401).redirect('/users/login');
+
     }
 
-    next()
 }
 
 

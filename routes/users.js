@@ -4,11 +4,12 @@ const router = Router();
 
 const { Login, Register, Close } = require('../controllers/users');
 const { NameNotExist, EmailNotExist, UserExist } = require('../helpers/db-validators');
+const { validarJWT2 } = require('../helpers/jwt-validator');
 const User = require('../models/User');
 
 
 
-router.get('/login', (req,res) => {
+router.get('/login', validarJWT2 ,(req,res) => {
     res.render('users/login')
 } )
 
@@ -24,6 +25,7 @@ router.get('/register', (req,res) => {
 })
 
 router.post('/register', [
+    validarJWT2,
     check('name', 'El nombre es obligatorio').trim().not().isEmpty(),
     check('name').custom(NameNotExist),
     check('email', 'El correo es invalido').isEmail(),

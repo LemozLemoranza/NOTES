@@ -7,6 +7,7 @@ const NewNote = (req,res) => {
 
 const AddNewNote = async(req,res) => {
 
+ 
 
     const errors = validationResult(req);
 
@@ -17,10 +18,9 @@ const AddNewNote = async(req,res) => {
     }
     
     else{
-
+        const usuario = req.usuario.id
         const { title, description } = req.body
-        const newNote = new Note({title, description})
-    
+        const newNote = new Note({title, description, user:usuario })
         await newNote.save()
         
         res.redirect('/notes/list-note')
@@ -29,7 +29,7 @@ const AddNewNote = async(req,res) => {
 }
 
 const ListNote = async(req,res)=>{
-    const notes = await Note.find().lean().sort({date: 'desc'});
+    const notes = await Note.find({user:req.usuario.id}).lean().sort({date: 'desc'});
     res.render('notes/list-note', {notes})
 }
 
@@ -49,11 +49,18 @@ const DeleteNote = async(req,res) => {
     res.redirect('/notes/list-note')
 }
 
+
+
+
+
+
+
 module.exports = {
     NewNote,
     AddNewNote,
     ListNote,
     ViewEditNote,
     EditNote,
-    DeleteNote
+    DeleteNote,
+    
 }

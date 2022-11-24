@@ -5,7 +5,7 @@ const { NewNote, AddNewNote, ListNote, ViewEditNote, EditNote, DeleteNote } = re
 const { validarJWT } = require('../helpers/jwt-validator');
 
 router.get('/new-note', [
-    validarJWT
+    validarJWT,
 ], NewNote)
 
 
