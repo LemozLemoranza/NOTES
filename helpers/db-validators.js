@@ -19,7 +19,6 @@ const EmailNotExist = async(email='') => {
 const UserExist = async(value, {req}) => {
     const email = req.body.email
     const user = await User.findOne({ email });
-    console.log(user)
 
     if(!user){
         throw new Error ('Correo o contraseña incorrectos-correo')

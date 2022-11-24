@@ -2,7 +2,7 @@ const {Router} = require('express');
 const { check } = require('express-validator');
 const router = Router();
 
-const { Login, Register } = require('../controllers/users');
+const { Login, Register, Close } = require('../controllers/users');
 const { NameNotExist, EmailNotExist, UserExist } = require('../helpers/db-validators');
 const User = require('../models/User');
 
@@ -13,14 +13,9 @@ router.get('/login', (req,res) => {
 } )
 
 router.post('/login', [
-
     check('email', 'El correo es invalido').isEmail(),
-
     check('password','La contraseña es obligatoria').not().isEmpty(),
-
-    check('password').custom(UserExist),
-    
-    
+    check('password').custom(UserExist),    
 ], Login )
 
 
@@ -47,8 +42,7 @@ router.post('/register', [
     ),   
 ], Register )
 
-
-
+router.post('/close', Close)
 
 
 

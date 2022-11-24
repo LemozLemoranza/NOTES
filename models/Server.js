@@ -59,6 +59,8 @@ class Server {
   routes(){
         this.app.use(this.paths.index, require('../routes/index'))
         this.app.use(this.paths.users, require('../routes/users'))
+        this.app.use(this.paths.notes, require('../routes/notes'))
+
 
   }
   

@@ -21,14 +21,13 @@ const Login = async(req,res) => {
     }
     else{
         const { email, password } = req.body
-        const user = User.findOne({email})
+        const user = await User.findOne({email})
         const token = await generarJWT(user.id)
 
         res.cookie('loginTK', token, {
             httpOnly:true
         })
-        console.log(token)
-        res.send('ok')
+        res.redirect('/notes/new-note')
     }
     
 }
@@ -58,13 +57,21 @@ const Register = async(req,res) => {
         
         await newUser.save()
         
-        res.render('users/login',{name})
+        res.redirect('/users/login')
         
     }
    
 }
 
+
+
+
+const Close = (req,res) => {
+    res.clearCookie('loginTK').redirect('/users/login')
+}
+
 module.exports = {
     Login,
-    Register
+    Register,
+    Close
 }
