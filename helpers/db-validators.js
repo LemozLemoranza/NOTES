@@ -21,12 +21,12 @@ const UserExist = async(value, {req}) => {
     const user = await User.findOne({ email });
 
     if(!user){
-        throw new Error ('Correo o contraseña incorrectos-correo')
+        throw new Error ('Correo o contraseña incorrectos')
     }
     
     const passwordExiste = bcrypt.compareSync( value, user.password)
     if( !passwordExiste ){
-    throw new Error (`Correo o contraseña incorrectos-pass`)
+    throw new Error (`Correo o contraseña incorrectos`)
     }
 }
 
