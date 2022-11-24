@@ -1,14 +1,12 @@
-const {Router} = require('express')
+const {Router} = require('express');
+const { validarJWT2 } = require('../helpers/jwt-validator');
 const router = Router();
 
 
-router.get('/', (req, res)=>{
+router.get('/', validarJWT2 ,(req, res)=>{
     res.render('index')
 })
 
-router.get('/about', (req, res)=>{
-    res.render('about')
-})
 
 
 
