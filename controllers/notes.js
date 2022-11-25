@@ -39,10 +39,13 @@ const ViewEditNote = async(req,res) => {
 }
 
 const EditNote = async(req,res)=>{
-    const {title, description} = req.body
-    await Note.findByIdAndUpdate(req.params.id, {title, description})
-    res.redirect('/notes/list-note')
-}
+      
+
+        const {title, description} = req.body
+        await Note.findByIdAndUpdate(req.params.id, {title, description})
+        res.redirect('/notes/list-note')
+    
+    }
 
 const DeleteNote = async(req,res) => {
     await Note.findByIdAndDelete(req.params.id)

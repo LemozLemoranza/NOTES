@@ -23,9 +23,12 @@ router.get('/list-note', [
 ], ListNote)
 
 
-router.get('/edit-note/:id', [] , ViewEditNote)
+router.get('/edit-note/:id', [
+    
+] , ViewEditNote)
 
-router.put('/edit-note/:id', [], EditNote)
+router.post('/edit-note/:id', [], EditNote)
+
 
 router.delete('/delete/:id', [], DeleteNote)
 

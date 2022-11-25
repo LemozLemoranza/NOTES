@@ -1,13 +1,17 @@
 
 {{>nav-login}}
-<h1>LISTA DE NOTAS</h1>
+
+<div class="jumbotron">
+  <h1 class="display-4">LISTA DE NOTAS</h1>
+  
+
 <div class="row">
     {{#each notes}}
-    <div class="col-md-3">
+    <div class="col-md-6">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body ">
                 <h4 class="card-title">
-                    {{title}} <a href="/notes/edit-note/{{_id}}"><i class="fas fa-edit"></i></a>
+                    {{title}} <a href="/notes/edit-note/{{_id}}"><i class="fas fa-edit "></i></a>
                 </h4>
                 <p>
                     {{description}}
@@ -22,16 +26,22 @@
                 </form>
             </div>
         </div>
+        <hr class="my-4">
     </div>
 
 
 
     {{else}}
-    <div class="card mx-auto">
+    <div class="card mx-auto col-md-6">
         <div class="card-body">
-            <p class="lead">No hay notas aún</p>
-            <a href="/notes/new-note" class="btn btn-success"> Crear una</a>
+            <p class="lead text-center">No hay notas aún</p>
+            <a href="/notes/new-note" class="btn btn-success btn-block"> Crear una</a>
         </div>
     </div>
     {{/each}}
 </div>
+
+</div>
+
+
+

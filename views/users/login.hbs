@@ -3,17 +3,46 @@
 
 {{>nav-no-login}}
 
-<h1>LOGIN</h1>
-
-<form action="/users/login" method="post">
 
 
-<input type="email" name="email" value ="{{valores.email}}"  autocomplete="off" required>
-<input type="password" name="password" required>
+<div class="centro row">
+  <div class="col-md-4 mx-auto">
+    <div class=" card mt-5 bg-black rounded">
+      <div class="card-header text-center pt-5">
+        <h1 class="h4">
+          LOGIN
+        </h1>
+      </div>
+     
+      <div class="card-body">
+        <form action="/users/login" method="POST">
+          <div class="mb-3">
+            <label for="email">CORREO</label>
+            <input
+              type="email"
+              class="form-control bg-dark text-white"
+              name="email"
+              placeholder="Correo"
+              value ="{{valores.email}}" 
+              autofocus
+            />
+          </div>
+          <div class="mb-3">
+            <label for="passswore">CONTRASEÑA</label>
+            <input
+              type="password"
+              class="form-control bg-dark text-white"
+              name="password"
+              placeholder="Contraseña"
+            />
+          </div>
+          <button class="btn btn-success btn-block">
+            INGRESAR
+          </button>
+        </form>
+      </div>
 
-
-<button type="submit">ENVIAR</button>
-
-
-</form>
-
+      <p class="text-center">¿No tiene una cuenta? <br><a href="/users/register" class="text-center text-info">Registrarse ahora</a></p>
+    </div>
+  </div>
+</div>

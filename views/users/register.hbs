@@ -15,17 +15,74 @@
 {{/if}}
 
 
-<h1>REGISTER</h1>
-
-<form action="/users/register" method="post">
-
-<input type="text" name="name" value ="{{valores.name}}"  autocomplete="off" required placeholder="Nombre de Usuario">
-<input type="email" name="email" value ="{{valores.email}}"  autocomplete="off" required placeholder="Correo">
-<input type="password" name="password" required placeholder="Contraseña">
-<input type="password" name="confirm_password" required placeholder="Repetir contraseña">
-
-<button type="submit">ENVIAR</button>
 
 
-</form>
+<div class="centro row">
+  <div class="col-md-4 mx-auto">
+    <div class=" card mt-5 bg-black rounded">
+      <div class="card-header text-center pt-5">
+        <h1 class="h4">
+          REGISTRO
+        </h1>
+      </div>
+     
+      <div class="card-body">
+      <form action="/users/register" method="post">
 
+         <div class="mb-3">
+            <label for="name">NOMBRE DE USUARIO</label>
+            <input
+              autocomplete="off"
+              type="text"
+              class="form-control bg-dark text-white"
+              name="name"
+              placeholder="Nombre de usuario"
+              value ="{{valores.name}}" 
+              autofocus
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="email">CORREO</label>
+            <input
+              autocomplete="off"
+              type="email"
+              class="form-control bg-dark text-white"
+              name="email"
+              placeholder="Correo"
+              value ="{{valores.email}}" 
+              autofocus
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="passswore">CONTRASEÑA</label>
+            <input
+              type="password"
+              class="form-control bg-dark text-white"
+              name="password"
+              placeholder="Contraseña"
+            />
+          </div>
+
+            <div class="mb-3">
+            <label for="passswore">CONTRASEÑA</label>
+            <input
+              type="password"
+              class="form-control bg-dark text-white"
+              name="confirm_password"
+              placeholder="Confirmar contraseña"
+            />
+          </div>
+
+          
+          <button class="btn btn-success btn-block">
+            INGRESAR
+          </button>
+        </form>
+      </div>
+
+      <p class="text-center">Ya tiene una cuenta<br><a href="/users/login" class="text-center text-info">Ingresar</a></p>
+    </div>
+  </div>
+</div>

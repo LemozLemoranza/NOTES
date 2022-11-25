@@ -25,8 +25,8 @@ const validarJWT = async( req = request, res = response, next ) => {
 
     } catch (error) {
 
-        return res.status(401).redirect('/users/login');
-
+        res.clearCookie('loginTK').redirect('/users/login')
+        
     }
 
 }
