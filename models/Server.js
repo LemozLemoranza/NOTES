@@ -15,7 +15,7 @@ class Server {
     this.app = express();
     this.port = process.env.PORT;
     this.paths = {
-      index: "/",
+      index: "/home",
       users: "/users/",
       notes: "/notes/",
     };
