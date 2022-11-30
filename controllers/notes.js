@@ -29,8 +29,20 @@ const AddNewNote = async(req,res) => {
 }
 
 const ListNote = async(req,res)=>{
-    const notes = await Note.find({user:req.usuario.id}).lean().sort({date: 'desc'});
-    res.render('notes/list-note', {notes})
+    const userTK = req.cookies.userTK
+
+  if (!userTK) {
+    res.clearCookie("loginTK").redirect("/users/login");
+  }
+    try{
+
+        const notes = await Note.find({user:req.usuario.id}).lean().sort({date: 'desc'});
+        res.render('notes/list-note', {notes, userTK})
+    }catch{
+
+        res.clearCookie("loginTK", "userTK").redirect("/users/login");
+
+    }
 }
 
 const ViewEditNote = async(req,res) => {

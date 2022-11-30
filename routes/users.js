@@ -1,11 +1,10 @@
-const {Router, application} = require('express');
+const {Router} = require('express');
 const { check } = require('express-validator');
 const router = Router();
 
 const { Login, Register, Close } = require('../controllers/users');
 const { NameNotExist, EmailNotExist, UserExist } = require('../helpers/db-validators');
 const { validarJWT2 } = require('../helpers/jwt-validator');
-const User = require('../models/User');
 
 
 
