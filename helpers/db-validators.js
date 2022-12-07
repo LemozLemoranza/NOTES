@@ -2,16 +2,16 @@ const User = require("../models/User");
 const bcrypt = require('bcryptjs');
 
 
-const NameNotExist = async(name='') => {
-    name.toUpperCase()
+const NameNotExist = async(nameL='') => {
+    const name = nameL.toUpperCase()
     const nameExist = await User.findOne({name});
     if( nameExist ){
         throw new Error (`El nombre ${name} ya se encuentra registrado`)
     }
 }
 
-const EmailNotExist = async(email='') => {
-    email.toUpperCase()
+const EmailNotExist = async(emailL='') => {
+    const email = emailL.toUpperCase()
     const emailExist = await User.findOne({email});
     if( emailExist ){
         throw new Error (`El email ${email} ya se encuentra registrado`)
